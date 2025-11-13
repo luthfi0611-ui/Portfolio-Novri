@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luthfi — UI & UX Designer</title>
+
+  <!-- ✅ Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+   <!-- ✅ Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- ✅ Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+/>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+
+  <style>
+    * {
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #0d0d0d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    #splash {
+      animation: fadeOut 1s ease-in-out forwards;
+      animation-delay: 4s;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    #main {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+      animation-delay: 5s;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease;
+    }
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    #mobile-menu {
+  transform-origin: top;
+  animation: slideDown 0.3s ease;
+}
+
+    .animate-slideDown {
+      animation: slideDown 0.3s ease-in-out;
+    }
+
+    .hover-smooth {
+      transition: all 0.3s ease-in-out;
+    }
+    .hover-scale {
+      transition: transform 0.25s ease-out, border-color 0.25s ease-out;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.04);
+      border-color: #f59e0b;
+    }
+     @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+</head>
+
+<body class="overflow-x-hidden bg-[#0d0d0d] text-white font-[Poppins]">
+  <div id="splash" class="fixed inset-0 flex items-center justify-center bg-[#0d0d0d] z-50">
+    <img src="./asset/Gemini_Generated_Image_z3xljnz3xljnz3xl-removebg-preview 2.png" alt="Logo L" class="w-20 h-20 animate-bounce" />
+  </div>
+
+  <div id="main">
+    <header class="fixed w-full top-0 z-40 bg-[#0d0d0d]/90 border-b border-[#222] backdrop-blur-md">
+      <div class="max-w-[1100px] mx-auto px-6 flex items-center justify-between h-20">
+        <div class="flex items-center gap-2 cursor-pointer hover-smooth hover:scale-110">
+          <img src="./asset/Gemini_Generated_Image_z3xljnz3xljnz3xl-removebg-preview 2.png" alt="Logo" class="w-14 h-14 object-contain" />
+        </div>
+
+         <nav class="hidden md:flex items-center gap-10 text-sm">
+          <a href="#home" class="hover:text-[#f59e0b] hover-smooth">Home</a>
+          <a href="#about" class="hover:text-[#f59e0b] hover-smooth">About</a>
+          <a href="#services" class="hover:text-[#f59e0b] hover-smooth">Services</a>
+          <a href="#projects" class="hover:text-[#f59e0b] hover-smooth">Projects</a>
+          <a href="#testimonials" class="hover:text-[#f59e0b] hover-smooth">Testimonials</a>
+          <a href="#contact" class="hover:text-[#f59e0b] hover-smooth">Contact</a>
+        </nav>
+
+        <div class="md:hidden flex items-center">
+          <button id="menu-btn" class="text-white focus:outline-none transition-transform duration-200 active:scale-95 ">
+            <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="hidden w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav id="mobile-menu" class="hidden flex-col items-center bg-[#0d0d0d]/95 border-t border-[#222] py-6 text-center space-y-4 text-base w-full transition-all duration-300 ease-in-out">
+  <a href="#home" class="block w-full py-2 hover:text-[#f59e0b] hover-smooth">Home</a>
+  <a href="#about" class="block w-full py-2 hover:text-[#f59e0b] hover-smooth">About</a>
+  <a href="#services" class="block w-full py-2 hover:text-[#f59e0b] hover-smooth">Services</a>
+  <a href="#projects" class="block w-full py-2 hover:text-[#f59e0b] hover-smooth">Projects</a>
+  <a href="#testimonials" class="block w-full py-2 hover:text-[#f59e0b] hover-smooth">Testimonials</a>
+  <a href="#contact" class="block w-full py-2 hover:text-[#f59e0b] hover-smooth">Contact</a>
+</nav>
+
+    </header>
+
+    <section id="home" class="fade-up flex flex-col md:flex-row items-center justify-between max-w-[1100px] mx-auto px-6 pt-32 pb-16 gap-12 md:gap-20 ">
+      <div class="md:w-1/2 space-y-5 text-center md:text-left">
+        <h4 class="text-lg text-gray-400">Hi I am</h4>
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight">
+          <span class="text-[#D86204]">Luthfi Novriansyah</span><br />
+          <span class="flex justify-center md:justify-start items-end gap-2">
+            <span>Web</span>
+            <span class="block -mb-2 text-4xl">Developer</span>
+          </span>
+        </h1>
+        <p class="text-gray-400">
+          A solution-oriented web developer with expertise in building responsive and efficient web applications.
+          Passionate about creating engaging user experiences and optimizing performance.
+        </p>
+        <button class="bg-[#f59e0b] text-white px-5 py-2 rounded-lg hover:bg-[#fbbf24] hover-smooth hover:scale-110">
+          Hire Me
+        </button>
+      </div>
+
+      <div class="md:w-1/2 flex flex-col items-center">
+  <img src="asset/Group 22.png" alt="Luthfi"
+    class="w-56 h-56 md:w-[22rem] md:h-[22rem] rounded-full object-cover hover-smooth hover:scale-110" />
+  <div class="flex gap-8 mt-6">
+    <a href="https://www.instagram.com/novriii_0611/" target="_blank">
+      <i data-lucide="instagram"
+        class="w-6 h-6 hover:text-[#f59e0b] cursor-pointer hover-smooth  transition-transform duration-300 hover:scale-110"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/luthfi-novriasyah-b80192378/" target="_blank">
+      <i data-lucide="linkedin"
+        class="w-6 h-6 hover:text-[#f59e0b] cursor-pointer hover-smooth  transition-transform duration-300 hover:scale-110"></i>
+    </a>
+
+    <a href="https://www.tiktok.com/@luthfinovriasyah" target="_blank">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+        viewBox="0 0 448 512"
+        class="w-6 h-6 hover:text-[#f59e0b] cursor-pointer hover-smooth  transition-transform duration-300 hover:scale-110">
+        <path
+          d="M448,209.9a210.1,210.1,0,0,1-122.8-39.2V352.6A159.3,159.3,0,1,1,186.3,195.3V278a72.5,72.5,0,1,0,51.3,69V0h87.6A122.4,122.4,0,0,0,448,122.4Z" />
+      </svg>
+    </a>
+  </div>
+</div>
+    </section>
+
+    <section id="about" class="fade-up max-w-[1100px] mx-auto px-6 py-20 text-center md:text-left">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+        <img src="./asset/Group 5.png" alt="Luthfi" class="w-56 h-56 md:w-72 md:h-72 rounded-full object-cover border-4 border-[#f59e0b]" />
+        <div class="space-y-4 md:w-2/3">
+          <h2 class="text-3xl font-bold">About Me</h2>
+          <p class="text-gray-400 leading-relaxed">
+            Hi! I’m Luthfi, a passionate Frontend Developer who loves crafting clean, modern, and interactive user experiences.
+            I enjoy turning ideas into reality through code — especially using HTML, CSS, JavaScript, and frameworks like React and Tailwind CSS.
+          </p>
+        </div>
+      </div>
+    </section>
+
+   <section id="services" class="fade-up max-w-[1100px] mx-auto px-6 py-20 text-center">
+  <h2 class="text-3xl font-semibold mb-3 border-b border-[#f59e0b] inline-block pb-1">
+    Services
+  </h2>
+  <p class="text-gray-400 mb-10">
+    I offer a range of digital services including web development, UI/UX design, and performance optimization.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="bg-[#111] p-6 rounded-2xl border border-[#222] transition-all duration-300 ease-in-out hover:border-[#f59e0b] hover:scale-[1.03]">
+      <h3 class="font-semibold mb-2">Frontend Development</h3>
+      <p class="text-gray-400 text-sm">
+        Modern, responsive, and interactive websites with clean code and optimized performance.
+      </p>
+    </div>
+
+    <div class="bg-[#111] p-6 rounded-2xl border border-[#222] transition-all duration-300 ease-in-out hover:border-[#f59e0b] hover:scale-[1.03]">
+      <h3 class="font-semibold mb-2">UI / UX Design</h3>
+      <p class="text-gray-400 text-sm">
+        Designing user-centered interfaces that blend beauty and usability.
+      </p>
+    </div>
+
+    <div class="bg-[#111] p-6 rounded-2xl border border-[#222] transition-all duration-300 ease-in-out hover:border-[#f59e0b] hover:scale-[1.03]">
+      <h3 class="font-semibold mb-2">Website Optimization</h3>
+      <p class="text-gray-400 text-sm">
+        Improving site speed, SEO, and usability for better engagement.
+      </p>
+    </div>
+
+    <div class="bg-[#111] p-6 rounded-2xl border border-[#222] transition-all duration-300 ease-in-out hover:border-[#f59e0b] hover:scale-[1.03]">
+      <h3 class="font-semibold mb-2">Brand & Creative Design</h3>
+      <p class="text-gray-400 text-sm">
+        Creating visuals that express your brand’s values with impact.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section
+  id="projects"
+  class="fade-up max-w-[1100px] mx-auto px-6 py-20 text-center"
+>
+  <h2
+    class="text-3xl font-semibold mb-3 border-b border-[#f59e0b] inline-block pb-1"
+  >
+    My Projects
+  </h2>
+  <p class="text-gray-400 mb-10 max-w-[700px] mx-auto leading-relaxed">
+    Here are some of the projects I’ve worked on — each one built with passion,
+    creativity, and clean code. I love turning ideas into interactive digital
+    experiences that not only look great but also deliver real impact.
+  </p>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center" >
+    <div class="group bg-[#1a1a1a] p-4 rounded-2xl shadow-md border border-[#222] overflow-hidden transition-all duration-300 ease-in-out hover:scale-[1.03] hover:border-[#f59e0b]" >
+      <a href="https://bread-papas.vercel.app/#shop" target="_blank">
+        <div class="w-full aspect-[4/3] overflow-hidden rounded-xl mb-3">
+          <img
+            src="./asset/bread papa's.png"
+            alt="Bread Papa’s"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
+        </div>
+      </a>
+      <h3 class="font-semibold text-lg group-hover:text-[#f59e0b] transition-colors duration-300">
+        Bread Papa’s
+      </h3>
+    </div>
+
+    <div
+      class="group bg-[#1a1a1a] p-4 rounded-2xl shadow-md border border-[#222] overflow-hidden transition-all duration-300 ease-in-out hover:scale-[1.03] hover:border-[#f59e0b]"
+    >
+      <a href="https://luthfi0611-ui.github.io/app-olahraga/" target="_blank">
+        <div class="w-full aspect-[4/3] overflow-hidden rounded-xl mb-3">
+          <img
+            src="./asset/todolist.png"
+            alt="Todo List"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        </div>
+      </a>
+      <h3 class="font-semibold text-lg group-hover:text-[#f59e0b] transition-colors duration-300">
+        Todo List
+      </h3>
+    </div>
+    <div
+      class="group bg-[#1a1a1a] p-4 rounded-2xl shadow-md border border-[#222] overflow-hidden transition-all duration-300 ease-in-out hover:scale-[1.03] hover:border-[#f59e0b]">
+      <a href="https://nov-vegetable.vercel.app/" target="_blank">
+        <div class="w-full aspect-[4/3] overflow-hidden rounded-xl mb-3">
+          <img
+            src="./asset/vercel.png"
+            alt="Shop Vegetable"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+        </div>
+      </a>
+      <h3
+        class="font-semibold text-lg group-hover:text-[#f59e0b] transition-colors duration-300">
+        Shop Vegetable
+      </h3>
+    </div>
+  </div>
+</section>
+
+
+<section id="testimonials" class="py-20 bg-[#0d0d0d] text-white px-6 md:px-10">
+  <div class="max-w-[900px] mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-3 border-b border-[#f59e0b] inline-block pb-1">
+      Testimonials
+    </h2>
+    <p class="text-gray-400 mb-12">
+      Words from the awesome people I’ve worked with. Their trust inspires me to keep building better things every day.
+    </p>
+
+    <div class="relative overflow-hidden">
+      <div id="testimonialSlider" class="flex transition-transform duration-700 ease-in-out">
+        <div class="min-w-full px-6">
+          <div class="flex flex-col md:flex-row items-center gap-6 bg-[#1a1a1a] text-gray-300 p-8 rounded-2xl max-w-[700px] mx-auto before:first-letter:">
+            <img src="./asset/fathi.png" alt="Fathi Dzhahabis" class="w-24 h-24 rounded-full object-cover border-2 border-[#f59e0b]" />
+            <div class="text-left md:text-left">
+              <p class="italic mb-6"> 
+                <span class="text-[#f59e0b] text-lg">“</span>
+                It’s always great working with Luthfi. He understands what you want, adds his own creative touch, and turns it into something even better. Super reliable and talented.
+                <span class="text-[#f59e0b] text-lg">”</span>
+              </p>
+              <h3 class="font-semibold text-white">Name</h3>
+              <p class="text-gray-400 text-sm">Fathi Dzhahabis</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="min-w-full px-6">
+          <div class="flex flex-col md:flex-row items-center gap-6 bg-white text-[#0d0d0d] p-8 rounded-2xl max-w-[700px] mx-auto">
+            <img src="./asset/mustafid.png" alt="Muhammad Mustafal Ilmi" class="w-24 h-24 rounded-full object-cover border-2 border-[#f59e0b] " />
+            <div class="text-left md:text-left">
+              <p class="italic mb-6">
+                <span class="text-[#f59e0b] text-lg">“</span>
+                Working with Luthfi was an incredible experience. He’s professional, detail-oriented, and always delivers beyond expectations. Highly recommended!
+                <span class="text-[#f59e0b] text-lg">”</span>
+              </p>
+              <h3 class="font-semibold">Name</h3>
+              <p class="text-gray-700 text-sm">Muhammad Mustafid Ilmi</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="min-w-full px-6">
+          <div class="flex flex-col md:flex-row items-center gap-6 bg-[#1a1a1a] text-gray-300 p-8 rounded-2xl max-w-[700px] mx-auto">
+            <img src="./asset/faiz.png" alt="Faiz Ghazali" class="w-24 h-24 rounded-full object-cover border-2 border-[#f59e0b]" />
+            <div class="text-left md:text-left">
+              <p class="italic mb-6">
+                <span class="text-[#f59e0b] text-lg">“</span>
+                Luthfi brings ideas to life with style. His designs are clean, his code is smooth, and his energy makes every project fun and exciting.
+                <span class="text-[#f59e0b] text-lg">”</span>
+              </p>
+              <h3 class="font-semibold text-white">Name</h3>
+              <p class="text-gray-400 text-sm">Faiz Ghazali</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center mt-8 gap-2">
+        <button class="dot w-3 h-3 rounded-full bg-[#f59e0b]" onclick="moveToSlide(0)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-gray-500" onclick="moveToSlide(1)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-gray-500" onclick="moveToSlide(2)"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <section id="contact" class="py-20 text-center px-6 md:px-10">
+    <div class="max-w-[700px] mx-auto">
+      <h2 class="text-3xl font-semibold mb-3">Let's Design Together</h2>
+      <p class="text-gray-400 mb-8">
+        Let’s team up and create designs that don’t just look good — they feel right.
+        Ready to start something awesome? Let’s talk. 👇
+      </p>
+
+      <form id="contact-form"
+  data-aos="fade-up"
+  data-aos-duration="1000"
+  class="flex flex-col justify-center items-center gap-5 max-w-2xl mx-auto w-full px-6 mt-10">
+  
+  <input id="name" name="name" type="text" placeholder="Enter Your Name"
+    class="px-6 py-4 rounded-full text-black outline-none w-full focus:ring-2 focus:ring-[#f59e0b] transition" required>
+
+  <input id="email" name="email" type="email" placeholder="Enter Your Email"
+    class="px-6 py-4 rounded-full text-black outline-none w-full focus:ring-2 focus:ring-[#f59e0b] transition" required>
+
+  <textarea id="message" name="message" rows="4" placeholder="Your Message"
+    class="px-6 py-4 rounded-3xl text-black outline-none w-full focus:ring-2 focus:ring-[#f59e0b] transition resize-none" required></textarea>
+
+  <button type="submit"
+    class="bg-[#f59e0b] text-black px-10 py-4 rounded-full font-semibold hover:bg-[#e08907] w-full sm:w-auto transition-transform duration-300 hover:scale-110">
+    Contact Me
+  </button>
+</form>
+
+      <p id="success-message" class="text-green-400 mt-4 hidden">✅ Message sent successfully!</p>
+    </div>
+  </section>
+
+ <footer data-aos="fade-up" data-aos-duration="1000"
+  class="p-10 border-t border-neutral-800 bg-[#0d0d0d] text-neutral-300">
+  <div class="flex flex-col items-center space-y-8">
+    <div class="flex justify-center items-center">
+      <img src="./asset/Gemini_Generated_Image_z3xljnz3xljnz3xl-removebg-preview 2.png" alt="Luthfi Logo"
+        class="w-20 h-auto md:w-24 transition-transform duration-300 hover:scale-110">
+    </div>
+
+    <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-center">
+      <a href="#home" class="hover:text-amber-400 text-lg font-medium transition duration-300">Home</a>
+      <a href="#about" class="hover:text-amber-400 text-lg font-medium transition duration-300">About Me</a>
+      <a href="#services" class="hover:text-amber-400 text-lg font-medium transition duration-300">Services</a>
+      <a href="#projects" class="hover:text-amber-400 text-lg font-medium transition duration-300">Projects</a>
+      <a href="#testimonials" class="hover:text-amber-400 text-lg font-medium transition duration-300">Testimonials</a>
+      <a href="#contact" class="hover:text-amber-400 text-lg font-medium transition duration-300">Contact</a>
+    </nav>
+
+    <div class="flex gap-8" data-aos="zoom-in" data-aos-delay="200">
+      <a href="https://www.linkedin.com/in/luthfi-novriasyah-b80192378/" target="_blank" aria-label="LinkedIn">
+        <svg class="w-6 h-6 hover:text-amber-400 transition-transform duration-300 hover:scale-110"
+          fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M19 0h-14C2.239 0 0 2.239 0 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5V5c0-2.761-2.238-5-5-5zM8 19H5V8h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764S5.534 3.204 6.5 3.204s1.75.79 1.75 1.764S7.466 6.732 6.5 6.732zM20 19h-3v-5.604c0-3.368-4-3.529-4 0V19h-3V8h3v1.765c1.396-2.586 7-2.77 7 2.285V19z" />
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com/novriii_0611/" target="_blank" aria-label="Instagram">
+        <svg class="w-6 h-6 hover:text-amber-400 transition-transform duration-300 hover:scale-110"
+          fill="currentColor" viewBox="0 0 24 24">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07l.5.022c1.7.072 2.45.36 3.01.69a4.9 4.9 0 011.75 1.14c.48.48.86 1.05 1.14 1.75.33.56.62 1.31.69 3.01l.02.5c.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85l-.02.5c-.07.82-.25 1.54-.5 2.21-.35.95-.9 1.8-1.57 2.47a4.9 4.9 0 01-2.47 1.57c-.67.25-1.39.43-2.21.5l-.5.02c-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07l-.5-.02c-.82-.07-1.54-.25-2.21-.5a4.9 4.9 0 01-1.75-1.14c-.48-.48-.86-1.05-1.14-1.75-.33-.56-.62-1.31-.69-3.01l-.02-.5c-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85l.02-.5c.07-.82.25-1.54.5-2.21.35-.95.9-1.8 1.57-2.47a4.9 4.9 0 012.47-1.57c.67-.25 1.39-.43 2.21-.5l.5-.02c1.266-.058 1.646-.07 4.85-.07zm0 2.163a6.94 6.94 0 00-4.708.066l-.475.02c-1.55.066-2.12.33-2.52.56a2.7 2.7 0 00-1.09.72c-.4.4-.72 1.09-.56 2.52l-.02.475c-.056 1.22-.066 1.598-.066 4.708s.01 3.488.066 4.708l.02.475c.066 1.55.33 2.12.56 2.52.4.4.72 1.09.56 2.52l-.02.475c-.056 1.22-.066 1.598-.066 4.708s.01 3.488.066 4.708l.02.475c.066 1.55.33 2.12.56 2.52.4.4.72 1.09.56 2.52l-.02.475c-.056 1.22-.066 1.598-.066 4.708zM12 7.763A4.237 4.237 0 117.763 12 4.237 4.237 0 0112 7.763zm6.49-4.83a1.082 1.082 0 11-1.08 1.082 1.082 1.082 0 011.08-1.082z" />
+        </svg>
+      </a>
+
+      <a href="https://www.tiktok.com/@luthfinovriasyah" target="_blank" aria-label="TikTok">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+          viewBox="0 0 448 512"
+          class="w-6 h-6 hover:text-amber-400 transition-transform duration-300 hover:scale-110">
+          <path
+            d="M448,209.9a210.1,210.1,0,0,1-122.8-39.2V352.6A159.3,159.3,0,1,1,186.3,195.3V278a72.5,72.5,0,1,0,51.3,69V0h87.6A122.4,122.4,0,0,0,448,122.4Z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+
+<footer
+  class="text-center border-t border-[#222] py-8 opacity-0 translate-y-5 animate-[fadeInUp_1s_ease-out_forwards]">
+  <p class="text-gray-400 text-sm">
+    © 2025 <span class="text-[#f59e0b] font-semibold">Luthfi</span> — Designed & Developed with ❤️
+  </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+
+  <script>
+    lucide.createIcons();
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const hamburgerIcon = document.getElementById("hamburger-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const slider = document.getElementById("testimonialSlider");
+    const dots = document.querySelectorAll(".dot");
+    let currentSlide = 0;
+    const totalSlides = 3;
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      hamburgerIcon.classList.toggle("hidden");
+      closeIcon.classList.toggle("hidden");
+    });
+    const faders = document.querySelectorAll(".fade-up");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("show");
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    faders.forEach((el) => observer.observe(el));
+
+    function updateDots() {
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("bg-[#f59e0b]", i === currentSlide);
+      dot.classList.toggle("bg-gray-500", i !== currentSlide);
+    });
+  }
+
+  function moveToSlide(index) {
+    currentSlide = index;
+    slider.style.transform = `translateX(-${100 * index}%)`;
+    updateDots();
+  }
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    moveToSlide(currentSlide);
+  }, 5000);
+
+ AOS.init();
+
+  // ✅ EmailJS + SweetAlert2 logic
+  (function() { 
+    emailjs.init("T-VxQcnpLKQjodKWN");
+
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      Swal.fire({
+        title: 'Sending...',
+        text: 'Please wait while we send your message.',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+
+      emailjs.send("service_dsaysvc", "template_wimm9en", {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      })
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Message Sent!',
+          text: 'Thanks for reaching out, I’ll get back to you soon.',
+          showConfirmButton: false,
+          timer: 2500,
+          background: '#0d0d0d',
+          color: '#fff'
+        });
+
+        e.target.reset();
+  
+        setTimeout(() => {
+          window.location.href = '#portfolio'; 
+        }, 2600);
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Failed to send your message. Try again later!',
+          background: '#0d0d0d',
+          color: '#fff'
+        });
+      });
+    });
+  })();
+</script>
+  </script>
+</body>
+</html>
