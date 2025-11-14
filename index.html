@@ -8,8 +8,6 @@
   <!-- ✅ Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-   <!-- ✅ Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- ✅ Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,13 +15,7 @@
   <!-- ✅ Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link
-  rel="stylesheet"
-  href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-/>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -118,6 +110,30 @@
       transform: translateY(0);
     }
   }
+  .project-card {
+  transition: .3s;
+}
+
+.project-hover {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.group:hover .project-hover {
+  opacity: 1;
+}
+
+
   </style>
 </head>
 
@@ -261,68 +277,93 @@
     </div>
   </div>
 </section>
+ 
 
-<section
-  id="projects"
-  class="fade-up max-w-[1100px] mx-auto px-6 py-20 text-center"
->
-  <h2
-    class="text-3xl font-semibold mb-3 border-b border-[#f59e0b] inline-block pb-1"
-  >
+<section id="projects" class="fade-up max-w-[1100px] mx-auto px-6 py-20 text-center">
+  <h2 class="text-3xl font-semibold mb-3 border-b border-[#f59e0b] inline-block pb-1">
     My Projects
   </h2>
   <p class="text-gray-400 mb-10 max-w-[700px] mx-auto leading-relaxed">
-    Here are some of the projects I’ve worked on — each one built with passion,
+   Here are some of the projects I’ve worked on — each one built with passion,
     creativity, and clean code. I love turning ideas into interactive digital
     experiences that not only look great but also deliver real impact.
   </p>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-center" >
-    <div class="group bg-[#1a1a1a] p-4 rounded-2xl shadow-md border border-[#222] overflow-hidden transition-all duration-300 ease-in-out hover:scale-[1.03] hover:border-[#f59e0b]" >
-      <a href="https://bread-papas.vercel.app/#shop" target="_blank">
-        <div class="w-full aspect-[4/3] overflow-hidden rounded-xl mb-3">
-          <img
-            src="./asset/bread papa's.png"
-            alt="Bread Papa’s"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
+  <div class="relative overflow-hidden">
+    <div id="projectSlider" class="flex transition-transform duration-700 ease-in-out">
+
+      <!-- PROJECT 1 -->
+      <div class="min-w-full px-6">
+        <a href="https://bread-papas.vercel.app/#shop">
+          <div class="project-card relative bg-[#1a1a1a] border border-[#222] rounded-2xl p-6 max-w-[700px] mx-auto">
+          <div class="group relative overflow-hidden rounded-xl mb-4">
+            <img src="./asset/bread papa's.png" class="w-full object-cover rounded-xl">
+            <div class="project-hover">
+              <p>Bread Papa’s — Modern bakery web shop with smooth UI/UX.</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold">Bread Papa’s</h3>
         </div>
-      </a>
-      <h3 class="font-semibold text-lg group-hover:text-[#f59e0b] transition-colors duration-300">
-        Bread Papa’s
-      </h3>
+        </a>
+        </div>
+        
+
+      <!-- PROJECT 2 -->
+      <div class="min-w-full px-6">
+        <a href="https://luthfi0611-ui.github.io/app-olahraga/ ">
+          <div class="project-card relative bg-[#1a1a1a] border border-[#222] rounded-2xl p-6 max-w-[700px] mx-auto">
+          <div class="group relative overflow-hidden rounded-xl mb-4">
+            <img src="./asset/todolist.png" class="w-full object-cover rounded-xl">
+            <div class="project-hover">
+              <p>Todo List App — Clean, simple UI for tracking daily tasks.</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold">Todo List</h3>
+        </div>
+        </a>
+        </div>
+        
+
+      <!-- PROJECT 3 -->
+      <div class="min-w-full px-6">
+        <a href="https://nov-vegetable.vercel.app/">
+          <div class="project-card relative bg-[#1a1a1a] border border-[#222] rounded-2xl p-6 max-w-[700px] mx-auto">
+          <div class="group relative overflow-hidden rounded-xl mb-4">
+            <img src="./asset/vercel.png" class="w-full object-cover rounded-xl">
+            <div class="project-hover">
+              <p>Vegetable Shop — Fresh product catalog with modern layout.</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold">Shop Vegetable</h3>
+        </div>
+        </a>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="min-w-full px-6">
+        <a href="https://business-landing-nine.vercel.app/">
+          <div class="project-card relative bg-[#1a1a1a] border border-[#222] rounded-2xl p-6 max-w-[700px] mx-auto">
+          <div class="group relative overflow-hidden rounded-xl mb-4">
+            <img src="./asset/business landing.png" class="w-full object-cover rounded-xl">
+            <div class="project-hover">
+              <p>Business Landing — Clean corporate landing page design.</p>
+            </div>
+          </div>
+          <h3 class="text-xl font-semibold">Business Landing</h3>
+        </div>
+        </a>
+        </div>
+        
     </div>
 
-    <div
-      class="group bg-[#1a1a1a] p-4 rounded-2xl shadow-md border border-[#222] overflow-hidden transition-all duration-300 ease-in-out hover:scale-[1.03] hover:border-[#f59e0b]"
-    >
-      <a href="https://luthfi0611-ui.github.io/app-olahraga/" target="_blank">
-        <div class="w-full aspect-[4/3] overflow-hidden rounded-xl mb-3">
-          <img
-            src="./asset/todolist.png"
-            alt="Todo List"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-        </div>
-      </a>
-      <h3 class="font-semibold text-lg group-hover:text-[#f59e0b] transition-colors duration-300">
-        Todo List
-      </h3>
+    <!-- DOTS -->
+    <div class="flex justify-center mt-8 gap-2">
+      <button class="project-dot w-3 h-3 rounded-full bg-[#f59e0b]" onclick="goProject(0)"></button>
+      <button class="project-dot w-3 h-3 rounded-full bg-gray-500" onclick="goProject(1)"></button>
+      <button class="project-dot w-3 h-3 rounded-full bg-gray-500" onclick="goProject(2)"></button>
+      <button class="project-dot w-3 h-3 rounded-full bg-gray-500" onclick="goProject(3)"></button>
     </div>
-    <div
-      class="group bg-[#1a1a1a] p-4 rounded-2xl shadow-md border border-[#222] overflow-hidden transition-all duration-300 ease-in-out hover:scale-[1.03] hover:border-[#f59e0b]">
-      <a href="https://nov-vegetable.vercel.app/" target="_blank">
-        <div class="w-full aspect-[4/3] overflow-hidden rounded-xl mb-3">
-          <img
-            src="./asset/vercel.png"
-            alt="Shop Vegetable"
-            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-        </div>
-      </a>
-      <h3
-        class="font-semibold text-lg group-hover:text-[#f59e0b] transition-colors duration-300">
-        Shop Vegetable
-      </h3>
-    </div>
+
   </div>
 </section>
 
@@ -347,8 +388,8 @@
                 It’s always great working with Luthfi. He understands what you want, adds his own creative touch, and turns it into something even better. Super reliable and talented.
                 <span class="text-[#f59e0b] text-lg">”</span>
               </p>
-              <h3 class="font-semibold text-white">Name</h3>
-              <p class="text-gray-400 text-sm">Fathi Dzhahabis</p>
+              <h3 class="font-semibold text-white">Fathi Dzhahabis</h3>
+              <p class="text-gray-400 text-sm">Client</p>
             </div>
           </div>
         </div>
@@ -362,8 +403,8 @@
                 Working with Luthfi was an incredible experience. He’s professional, detail-oriented, and always delivers beyond expectations. Highly recommended!
                 <span class="text-[#f59e0b] text-lg">”</span>
               </p>
-              <h3 class="font-semibold">Name</h3>
-              <p class="text-gray-700 text-sm">Muhammad Mustafid Ilmi</p>
+              <h3 class="font-semibold">Muhammad Mustafid Ilmi</h3>
+              <p class="text-gray-700 text-sm">Client</p>
             </div>
           </div>
         </div>
@@ -377,8 +418,8 @@
                 Luthfi brings ideas to life with style. His designs are clean, his code is smooth, and his energy makes every project fun and exciting.
                 <span class="text-[#f59e0b] text-lg">”</span>
               </p>
-              <h3 class="font-semibold text-white">Name</h3>
-              <p class="text-gray-400 text-sm">Faiz Ghazali</p>
+              <h3 class="font-semibold text-white">Faiz Ghazali</h3>
+              <p class="text-gray-400 text-sm">Client</p>
             </div>
           </div>
         </div>
@@ -578,7 +619,43 @@
       });
     });
   })();
+
+  const projectSlider = document.getElementById("projectSlider");
+const projectDots = document.querySelectorAll(".project-dot");
+
+let projectIndex = 0;
+const totalProjects = 4;
+
+function goProject(index) {
+  projectIndex = index;
+  projectSlider.style.transform = `translateX(-${100 * index}%)`;
+  updateProjectDots();
+}
+
+function updateProjectDots() {
+  projectDots.forEach((dot, i) => {
+    dot.classList.toggle("bg-[#f59e0b]", i === projectIndex);
+    dot.classList.toggle("bg-gray-500", i !== projectIndex);
+  });
+}
+
+let projectInterval = setInterval(() => {
+  projectIndex = (projectIndex + 1) % totalProjects;
+  goProject(projectIndex);
+}, 5000);
+
+// pause on hover
+projectSlider.addEventListener("mouseenter", () => clearInterval(projectInterval));
+
+projectSlider.addEventListener("mouseleave", () => {
+  projectInterval = setInterval(() => {
+    projectIndex = (projectIndex + 1) % totalProjects;
+    goProject(projectIndex);
+  }, 5000);
+});
+
+
+
 </script>
-  </script>
 </body>
 </html>
